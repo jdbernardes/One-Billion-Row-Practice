@@ -25,4 +25,9 @@ class DataGenerator:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             writer.writeheader()
             writer.writerows(credit_cards)
+    
+if __name__ == "__main__":
+    print("Gerando Arquivos")
+    generator = DataGenerator()
+    generator.create_csv(int(input("Defina o numero de registros que deseja gerar: ")))
         
