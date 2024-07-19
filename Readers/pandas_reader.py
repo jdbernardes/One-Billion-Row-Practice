@@ -3,7 +3,6 @@ from multiprocessing import Pool, cpu_count
 from tqdm import tqdm
 
 
-
 class PandasReader:
 
     def __init__(self, chunk_size:int, total_linhas_conhecidas:int, file_path:str) -> None:
@@ -35,7 +34,7 @@ class PandasReader:
         print(f"Num records por result: {len(results[0])}")
         final_df = pd.concat(results, ignore_index=True)
         #final_aggregate = final_df.groupby('Card_Provider')['Card_Number'].count().reset_index()
-        final_aggregate = final_df.groupby('Card_Provider')['Card_Number'].count()
+        final_aggregate = final_df.groupby('Card_Provider')['Card_Number'].sum()
         return final_aggregate
 
     
@@ -43,11 +42,12 @@ if __name__ == "__main__":
     import time
     print("Iniciando Processamento")
     start_time = time.time()
-    path = r"C:\Users\julio\OneDrive\Área de Trabalho\Projects\One-Billion-Row-Pratica\One-Billion-Row-Practice\Data\data.csv"
+    #path = r"C:\Users\julio\OneDrive\Área de Trabalho\Projects\One-Billion-Row-Pratica\One-Billion-Row-Practice\Data\data.csv"
+    path ="./Data/data.csv"
     pdreader = PandasReader(100000, 2000000, path)
     df = pdreader.create_df_with_pandas()
     total_time = time.time() - start_time
     print(f"Tempo de Processamento: {total_time}")
-    print(df.tail())
-    #print(df.info())
+    print(df.head())
+    #print(df.info()
 
