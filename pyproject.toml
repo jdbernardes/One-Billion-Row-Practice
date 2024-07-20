@@ -11,6 +11,7 @@ faker = "^26.0.0"
 pandas = "^2.2.2"
 tdqm = "^0.0.1"
 duckdb = "^1.0.0"
+dask = {extras = ["dataframe"], version = "^2024.7.1"}
 
 
 [build-system]
