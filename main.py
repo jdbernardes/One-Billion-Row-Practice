@@ -1,6 +1,6 @@
 import time
 import csv
-from data_generator.data_generator import DataGenerator
+# from data_generator.data_generator import DataGenerator
 from readers.python_reader import PythonReader
 from readers.pandas_reader import PandasReader
 from readers.dask_reader import DaskReader
@@ -18,9 +18,9 @@ sres = SaveResults()
 path = "./Data/data.csv"
 total_records = 2000000
 
-if __name__ =='__main__':
+if __name__ == '__main__':
 
-    field_names= ['Library', 'Total_Records', 'Operation_Type', 'Time_Taken']
+    field_names = ['Library', 'Total_Records', 'Operation_Type', 'Time_Taken']
     with open('./Data/result.csv', 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=field_names)
         writer.writeheader()
@@ -46,7 +46,7 @@ if __name__ =='__main__':
     dreader = DaskReader(path)
     start_time_dask = time.time()
     df = dreader.read_data()
-    result_df = df.compute().reset_index(name ='Total_Cards_Emited')
+    result_df = df.compute().reset_index(name='Total_Cards_Emited')
     took_dask = time.time() - start_time_dask
     sres.save_results('Dask', total_records, 'Count', round(took_dask, 2))
     print(f'Processamento finalizado em {took_dask}.')
@@ -70,7 +70,3 @@ if __name__ =='__main__':
     took_duck = time.time() - start_time_duck
     sres.save_results('Duck DB', total_records, 'Count', round(took_duck, 2))
     print(f"Leitura concluida em {took_duck}")
-
-
-
-
