@@ -25,7 +25,6 @@ class PythonReader:
     
 if __name__ == '__main__':
     import time
-    from itertools import islice
     path = "./Data/data.csv"
     total_records = 2000000
     preader = PythonReader(path, total_records)

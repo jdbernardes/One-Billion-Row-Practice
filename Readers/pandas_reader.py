@@ -42,12 +42,9 @@ if __name__ == "__main__":
     import time
     print("Iniciando Processamento")
     start_time = time.time()
-    #path = r"C:\Users\julio\OneDrive\Área de Trabalho\Projects\One-Billion-Row-Pratica\One-Billion-Row-Practice\Data\data.csv"
     path ="./Data/data.csv"
     pdreader = PandasReader(100000, 2000000, path)
     df = pdreader.create_df_with_pandas()
     total_time = time.time() - start_time
     print(f"Tempo de Processamento: {total_time}")
     print(df.head())
-    #print(df.info()
-
